@@ -1,4 +1,4 @@
-﻿using Mono.Data.Sqlite;
+using Mono.Data.Sqlite;
 using MySql.Data.MySqlClient;
 using Newtonsoft.Json;
 using System;
@@ -105,19 +105,19 @@ namespace AutoTSR
                 },
                 new SqlColumn("Remaining", MySqlDbType.Int32)
             });
-            IDbConnection arg_160_0 = Database;
-            IQueryBuilder arg_160_1;
+            IDbConnection DB = Database;
+            IQueryBuilder IQB;
             if (Database.GetSqlType() != SqlType.Sqlite)
             {
                 IQueryBuilder queryBuilder = new MysqlQueryCreator();
-                arg_160_1 = queryBuilder;
+                IQB = queryBuilder;
             }
             else
             {
                 IQueryBuilder queryBuilder = new SqliteQueryCreator();
-                arg_160_1 = queryBuilder;
+                IQB = queryBuilder;
             }
-            SqlTableCreator sqlTableCreator = new SqlTableCreator(arg_160_0, arg_160_1);
+            SqlTableCreator sqlTableCreator = new SqlTableCreator(DB, IQB);
             sqlTableCreator.EnsureTableStructure(table);
         }
 
