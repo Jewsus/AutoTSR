@@ -47,7 +47,7 @@ namespace AutoTSR
         {
             get
             {
-                return "Jewsus";
+                return "Jewsus, Ancientgods";
             }
         }
 
